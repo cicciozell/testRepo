@@ -1,0 +1,17 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Clone') {
+         steps {
+            // Get some code from a GitHub repository
+            git 'https://github.com/cicciozell/testRepo.git'
+         }
+      }
+      stage('Read') {
+         steps {
+            sh 'cat seed2.json'
+         }
+      }
+   }
+}
