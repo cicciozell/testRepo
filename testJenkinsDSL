@@ -1,0 +1,22 @@
+job('generatedParamJob') {
+  parameters {
+    stringParam('Object', 'Undescribed', 'Type of object') 
+  }
+  steps {
+    shell('echo $JOB_NAME $BUILD_NUMBER')
+    shell('echo $Object')
+  }
+  publishers {
+  	downstreamParameterized {
+      trigger('testDownstreamWith2Params') {
+        condition('SUCCESS')
+        parameters {
+          predefinedBuildParameters {
+    	  	properties('downstreamFirstParam=$Object\ndownstreamSecondParam=p2')
+            textParamValueOnNewLine(true)
+          }
+        }
+      }
+    }
+  }
+}
