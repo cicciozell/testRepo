@@ -1,4 +1,4 @@
-job('generatedParamJob') {
+job('generatedParamJobFromGit') {
   parameters {
     stringParam('Object', 'Undescribed', 'Type of object') 
   }
