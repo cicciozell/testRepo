@@ -1,0 +1,18 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Clone') {
+         steps {
+            // Get some code from a GitHub repository
+            git 'https://github.com/cicciozell/testRepo.git'
+         }
+      }
+      stage('List') {
+         steps {
+            sh 'ls'
+         }
+      }
+      
+   }
+}
